@@ -16,6 +16,7 @@ import (
 
 	"github.com/XrayR-project/XrayR/api"
 	"github.com/XrayR-project/XrayR/api/bunpanel"
+	"github.com/XrayR-project/XrayR/api/cowallpanel"
 	"github.com/XrayR-project/XrayR/api/gov2panel"
 	"github.com/XrayR-project/XrayR/api/newV2board"
 	"github.com/XrayR-project/XrayR/api/pmpanel"
@@ -174,6 +175,8 @@ func (p *Panel) Start() {
 	for _, nodeConfig := range p.panelConfig.NodesConfig {
 		var apiClient api.API
 		switch nodeConfig.PanelType {
+		case "CoWallpanel":
+			apiClient = cowallpanel.New(nodeConfig.ApiConfig)
 		case "SSpanel":
 			apiClient = sspanel.New(nodeConfig.ApiConfig)
 		case "NewV2board", "V2board":

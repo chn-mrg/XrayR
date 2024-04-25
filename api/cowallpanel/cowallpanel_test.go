@@ -5,7 +5,7 @@ import (
 	"testing"
 
 	"github.com/XrayR-project/XrayR/api"
-	"github.com/XrayR-project/XrayR/api/sspanel"
+	"github.com/XrayR-project/XrayR/api/cowallpanel"
 )
 
 func CreateClient() api.API {
@@ -15,7 +15,7 @@ func CreateClient() api.API {
 		NodeID:   3,
 		NodeType: "V2ray",
 	}
-	client := sspanel.New(apiConfig)
+	client := cowallpanel.New(apiConfig)
 	return client
 }
 
@@ -36,7 +36,7 @@ func TestGetSSNodeInfo(t *testing.T) {
 		NodeID:   64,
 		NodeType: "Shadowsocks",
 	}
-	client := sspanel.New(apiConfig)
+	client := cowallpanel.New(apiConfig)
 	nodeInfo, err := client.GetNodeInfo()
 	if err != nil {
 		t.Error(err)
@@ -51,7 +51,7 @@ func TestGetTrojanNodeInfo(t *testing.T) {
 		NodeID:   72,
 		NodeType: "Trojan",
 	}
-	client := sspanel.New(apiConfig)
+	client := cowallpanel.New(apiConfig)
 	nodeInfo, err := client.GetNodeInfo()
 	if err != nil {
 		t.Error(err)
